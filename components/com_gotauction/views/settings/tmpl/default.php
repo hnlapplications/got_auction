@@ -14,6 +14,7 @@
 	});
 </script>
 
+?>
 
 <h1>Gotauction Settings</h1>
 
