@@ -1,11 +1,11 @@
 <?php
 defined("_JEXEC") or die();
 
-class GotauctionTableSettings extends JTable
+class GotauctionTableSetting extends JTable
 {
 	public function __construct(&$db)
 	{
-		parent::__construct("#__gottodo_settings", "id", $db);
+		parent::__construct("#__gotauction_settings", "id", $db);
 	}
 	
 	public function bind($array, $ignore='')
