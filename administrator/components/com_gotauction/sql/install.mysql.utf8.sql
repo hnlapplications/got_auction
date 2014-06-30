@@ -1,19 +1,3 @@
-<<<<<<< HEAD
---
--- Table structure for table `address`
---
-
-CREATE TABLE IF NOT EXISTS `#__gotauction_address` (
-  `id` int(11) NOT NULL,
-  `street_number` int(11) NOT NULL,
-  `street_name` varchar(100) NOT NULL,
-  `suburb` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `post_code` int(11) NOT NULL,
-  `gps_x` float NOT NULL,
-  `gps_y` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
 
 --
@@ -142,7 +126,3 @@ CREATE TABLE IF NOT EXISTS `#__gotauction_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-
-
-
->>>>>>> 0e20315f6f7ce8c5520868ff5b9cc2927a8627b4
