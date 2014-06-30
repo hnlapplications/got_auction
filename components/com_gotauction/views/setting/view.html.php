@@ -20,6 +20,10 @@ class GotauctionViewSetting extends JViewLegacy
 		$this->item->gps_x=$address->gps_x;
 		$this->item->gps_y=$address->gps_y;
 		
+		$this->auction_types=$this->getAuctionTypes();
+		$this->auction_categories=$this->getAuctionCategories();
+		$this->lot_types=$this->getLotTypes();
+		
 		if (count($errors=$this->get('Errors')))
 		{
 			JError::raiseError(500, implode("\n", $errors));
@@ -62,5 +66,32 @@ class GotauctionViewSetting extends JViewLegacy
 		}
 		
 		
+	}
+	
+	private function getAuctionTypes()
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select($db->quoteName(array("id", "title")))->from($db->quoteName("#__gotauction_auction_type"));
+		$db->setQuery($query);
+		return $db->loadObjectList();
+	}
+	
+	private function getAuctionCategories()
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select($db->quoteName(array("id", "title")))->from($db->quoteName("#__gotauction_auction_category"));
+		$db->setQuery($query);
+		return $db->loadObjectList();
+	}
+	
+	private function getLotTypes()
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select($db->quoteName(array("id", "title")))->from($db->quoteName("#__gotauction_lot_type"));
+		$db->setQuery($query);
+		return $db->loadObjectList();
 	}
 }

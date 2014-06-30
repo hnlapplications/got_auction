@@ -96,4 +96,87 @@ class GotauctionControllerSetting extends JControllerForm
 		$this->setRedirect("index.php?option=com_gotauction&view=setting&layout=edit&id=1");	
 	}
 	
+	public function save_type()
+	{
+		$input=JFactory::getApplication()->input;
+		$type=$input->get('recordType', 'string', '');
+		$title=$input->get('title', 'string', '');
+		$isNew=$input->get('isNew', 'boolean', 'true');
+		$recordId=$input->get('recordId', 'int', '');
+		
+		//choose a table to insert to
+		$table_name="";
+		switch($type)
+		{
+			case "auctiontype":
+					$table_name="#__gotauction_auction_type";
+				break;
+			case "auctioncategory":
+					$table_name="#__gotauction_auction_category";
+				break;
+			case "lottype":
+					$table_name="#__gotauction_lot_type";
+				break;
+			default:
+				break;
+		}
+		
+		
+		$type_object=new stdClass(); //used to insert record into the database
+		$type_object->title=$title;
+		
+		
+		$db=JFactory::getDbo();
+		
+		if ($isNew=='true')
+		{
+			$db->insertObject($table_name, $type_object);
+		}
+		else
+		{
+			//give it an id to update
+			$type_object->id=$recordId;
+			$db->updateObject($table_name, $type_object, 'id');
+		}
+		
+		echo "ok";
+		Jfactory::getApplication()->close();
+		
+	}
+	
+	public function delete_type()
+	{
+		$input=JFactory::getApplication()->input;
+		$type=$input->get('recordType', 'string', '');
+		$recordId=$input->get('recordId', 'int', '');
+		
+		//choose a table to insert to
+		$table_name="";
+		switch($type)
+		{
+			case "auctiontype":
+					$table_name="#__gotauction_auction_type";
+				break;
+			case "auctioncategory":
+					$table_name="#__gotauction_auction_category";
+				break;
+			case "lottype":
+					$table_name="#__gotauction_lot_type";
+				break;
+			default:
+				break;
+		}
+
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->delete($db->quoteName($table_name))->where($db->quoteName("id") . "=" . $recordId);
+		$db->setQuery($query);
+		$db->query();
+		
+		
+		echo "ok";
+		Jfactory::getApplication()->close();
+		
+	}
+	
 }
