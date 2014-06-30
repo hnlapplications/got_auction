@@ -13,7 +13,10 @@ class GotauctionControllerSettings extends JControllerForm
 	function save()
 	{
 		JFactory::getApplication()->enqueueMessage("Still hav to implement save method for settings controller");
-		$this->setRedirect("index.php?option=com_gotauction&view=settings&task=edit");
+		
+		
+		
+		$this->setRedirect("index.php?option=com_gotauction&view=settings&layout=edit");
 	}
 	
 }

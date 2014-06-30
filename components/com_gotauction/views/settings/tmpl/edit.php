@@ -8,7 +8,7 @@ JHtml::_('script', 'system/core.js', false, true);
 	<div class="btn-toolbar">
 		<div class="btn-group">
 			<button tyoe="button" class="btn btn-primary" onclick="Joomla.submitbutton('settings.save');">
-				<i class="icon-new"></i> <?php echo JText::_('COM_GOTTODO_BUTTON_SAVE_AND_CLOSE') ?>
+				<i class="icon-new"></i> Save and Close
 			</button>
 		</div>
 		<div class="btn-group">
